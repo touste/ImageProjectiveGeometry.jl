@@ -2244,7 +2244,7 @@ function imgtrans(img::Array{T,3}, H::Array{Float64,2}) where T <: Real
         # Set up interpolant Seems to be faster to repeat the loops
         # for each channel than it is to slice down through the
         # channels
-        itp = interpolate(img[:,:,chan], BSpline(Linear()), OnCell())
+        itp = interpolate(img[:,:,chan], BSpline(Linear()))
         
         for c = 1:ncols, r = 1:nrows
             #  Hxy = invH*[c,r,1]  # The following is _much_ faster
@@ -2254,7 +2254,7 @@ function imgtrans(img::Array{T,3}, H::Array{Float64,2}) where T <: Real
             x = Hxy[1]/Hxy[3]
             y = Hxy[2]/Hxy[3]
             if x >=1 && x <= cols && y >=1 && y <= rows
-               newimg[r,c, chan] = itp[y,x]
+               newimg[r,c, chan] = itp(y,x)
             end
         end
     end
