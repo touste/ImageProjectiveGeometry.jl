@@ -446,7 +446,7 @@ function mapimage2plane!(mappedimg::Array{Float64,2}, rect3Dpts::Array{Float64,2
     end
 
     H = homography2d(imgxy, mappedxy)  # Generate homography
-    imtrans!(mappedimg, img, H)        # and apply homography to img.
+    imgtrans!(mappedimg, img, H)        # and apply homography to img.
 
     return nothing
 end
