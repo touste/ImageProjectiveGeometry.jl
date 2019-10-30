@@ -1489,8 +1489,8 @@ function stereorectify(P1, img1, P2, img2, xy1=zeros(0), xy2=zeros(0);
                                    xy1, xy2, scale=scale, disparitytruncation=disparitytruncation)
 
     # Apply homographies to obtaoin rectified images.
-    img1r = imtrans(img1, H1)  
-    img2r = imtrans(img2, H2)
+    img1r = imgtrans(img1, H1)  
+    img2r = imgtrans(img2, H2)
 
     if diagnostics
         figure(21); clf()
